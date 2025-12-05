@@ -1,0 +1,26 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+
+  build_texttool:
+    desc: Build the text processing tool
+    cmds:
+      - cd src/texttool ; pwd ; npm install
+      - cd src/texttool ; npm run build 
+      - rm -rf ./docs/texttool
+      - cp -r ./src/texttool/dist ./docs/texttool
+
+  build:
+    desc: Build all projects
+    deps:
+      - build_texttool
