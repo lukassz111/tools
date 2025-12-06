@@ -20,6 +20,12 @@ tasks:
       - rm -rf ./docs/texttool
       - cp -r ./src/texttool/dist ./docs/texttool
 
+  dev_texttool:
+    desc: Start development server for text tool
+    cmds:
+      - cd src/texttool ; npm install
+      - cd src/texttool ; npm run dev
+
   build:
     desc: Build all projects
     deps:
